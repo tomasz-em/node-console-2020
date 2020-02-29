@@ -270,7 +270,7 @@ Przed rozpoczęciem pracy z webpackiem należy w pliku `index.html` usunąć lin
 Od teraz komendą `npm run-script dev` wystartujemy developerski serwer, który będzie serwował naszą aplikację i odświeżał ją po naszysz zmianach w kodzie. Serwer developerski domyślnie serwuje aplikację na porcie `8080`.
 
 Dodatkowo w pliku `webpack.config.js` należy dodać wpis konfiguracyjny serwera:
-```json
+```javascript
   devServer: {
     historyApiFallback: true,
     port: 8080,
@@ -299,7 +299,7 @@ Należy pamiętać, że kod JavaScript wykonywany na serwerze, pomimo braku ró�
 Wykonując skrypt poniższy skrypt w przeglądarce
 
 ```javascript
-document.write(window.location.href)
+document.write(window.location.href);
 ```
 
 zobaczymy, że dokument z tekstem odpowiadającym obecnemu adresowi URL na którym aktualnie jesteśmy, natomiast wykonując ten sam skrypt w Node zobaczymy poniższy błąd:
@@ -325,7 +325,7 @@ touch index.js
 
 Serwer webowy dla aplikacji możemy napisać w całości używając komponentów biblioteki standardowej Node.js, jak w prostym przykładnie poniżej:
 ```javascript
-var http = require('http')
+var http = require('http');
 
 var PORT = 3000;
 
@@ -348,7 +348,7 @@ Natomiast w tym przypadku musimy samodzielnie zadbać o trasowanie, parsowanie w
 
 Aby nie wymyślać koła na nowo użyjemy frameworka Express.js, w którym ten tę samą funkcjonalność możemy zapisać w dużo bardziej czytelny sposób:
 ```javascript
-var express = require('express')
+var express = require('express');
 
 var PORT = 3000;
 
@@ -412,12 +412,12 @@ Po zbudowaniu frontendu poleceniem `npm run-script build` pliki produkcyjne są 
 Aby użyć ich jako interfejsu naszej aplikacji posłużymy się modułem `static` udostępnionym przez Express.js. W tym momencie możemy zastąpić kod odpowidzialny za generowanie odpowiedzie na dowolne zapytanie jako `{"hello": "world"}` kodem, który wyśle do przeglądarki stworzone przez nas pliki:
 
 ```javascript
-app.get('*', express.static('./dist));
+app.get('*', express.static('./dist'));
 ```
 
 Próba uruchomienia aplikacji zakończy się błędem, ponieważ użyliśmy w kodzie modułu `path`, który nie został jeszcze zadeklarowany. Naprawimy to dodając poniższą linijkę na początku pliku:
 ```javascript
-var path = require('path')
+var path = require('path');
 ```
 
 Każda zmiana w pliku `index.js` wymaga restartu aplikacji, aby zautomatyzować tę czynność zainstalujemy pakiet o nazwie `nodemon`, który będzie restartować serwer podczas zmian w pliku źródłowym w sposób automatyczny.
@@ -476,7 +476,7 @@ npm install --save express-http-proxy
 
 Następnie w pliku `index.js` w jednej z pierwszych linii dodajemy deklarację:
 ```javascript
-var proxy = require('express-http-proxy')
+var proxy = require('express-http-proxy');
 ```
 
 oraz zastępujemy kod odpowiedzialny za serwowanie statycznych plików poniższym:
@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function addNote(note) {
     var element = document.createElement('div')
     element.innerHTML = note;
-    element.className = 'note'
+    element.className = 'note';
     content.appendChild(element);
   }
 
