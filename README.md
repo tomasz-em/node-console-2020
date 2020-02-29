@@ -4,7 +4,7 @@
 
 Po uruchomieniu terminala na ekranie powinien pojawić się tak zwany `prompt` czyli znak zachęty. Jest to ciąg znaków zawierający kilka podstawowych informacji:
 
-```
+```bash
 student@host:~/project $
 ```
 
@@ -22,7 +22,6 @@ Wymiana komunikatów pomiędzy użytkownikiem a komputerem odbywa się w trybie 
 * `katalog domowy` - główny katalog użytkownika oznaczany jako `~`
 * `katalog roboczy` - katalog w którym obecnie znajduje się użytkownik, oznaczany jako `.`
 
-
 ## Podstawowe komendy
 
 * `cd ścieżka` - zmienia aktualny katalog (od *change directory*)
@@ -31,7 +30,7 @@ Wymiana komunikatów pomiędzy użytkownikiem a komputerem odbywa się w trybie 
   * `cd` – z dowolnego miejsca, zmienia katalog na domowy
   * `cd ..` – przechodzi do katalogu o jeden wyższego w drzewie katalogów niż obecny
   * `cd /home/dir` – z dowolnego miejsca, przechodzi do katalogu zaczynając od początku drzewa: /
-  * `cd` -  – przechodzi do poprzedniego katalogu
+  * `cd -` – przechodzi do poprzedniego katalogu
 * `pwd` – wypisuje scieżkę obecnego katalogu (od *print working directory*)
 * `ls` – listuje katalog (od *list*)
   * `ls` – listuje katalog . (`ls .`)
@@ -58,7 +57,7 @@ Wymiana komunikatów pomiędzy użytkownikiem a komputerem odbywa się w trybie 
 * `less` – wygodne i szybkie przegladanie plikow tekstowych
   * `less plik` – wyświetla zawartośc pliku i pozwa przewijac strony (q-wyjscie)
 
-> UWAGA! Brak informacji zwrotnej o błędzie po wykonaniu polecenia najczęściej oznaca sukces.
+> UWAGA! Brak informacji zwrotnej o błędzie po wykonaniu polecenia najczęściej oznacza sukces.
 
 ## Pliki i katalogi
 * `touch` – zmienia czas dostępu i modyfikacji pliku, lub jeśli plik nie istnieje - tworzy go.
@@ -106,10 +105,9 @@ Wymiana komunikatów pomiędzy użytkownikiem a komputerem odbywa się w trybie 
   * `ls -l | lpr` – program drukujący 'lpr' dostanie na wejście liste plików
   * `cat plik.txt | tac | grep "coś" | head > cosie.txt` – wypisanie pliku.txt na program 'tac', który odwaca kolejność wierszy, wynik tego przekierwany na 'grep', który wypisze tylko linie zawierające słowo "coś", wynik tego wysłany na program 'head', który pośle dalej tylk opierwsze 10 wierszy na wyjście, które przekierowaliśmy do pliku cosie.txt.
 
-
 # Podstawy gita
 
-Przed rozpoczęciem pracy nad projektem warto zatroszczyć się o wersjonowanie swojego projektu aby być w stanie przywrócić działającą wersję jeśli coś pójdzie nie tak. W tym celu należy posłużyć się wcześniej zainstalowanym programem `git`.
+Przed rozpoczęciem pracy nad projektem warto zatroszczyć się o wersjonowanie swojego projektu, aby być w stanie przywrócić działającą wersję, jeśli coś pójdzie nie tak. W tym celu należy posłużyć się wcześniej zainstalowanym programem `git`.
 
 Podstawowe komendy gita:
 * `git init` - utwórz repozytorium w katalogu w którym obecnie się znajdujesz
@@ -123,15 +121,14 @@ Ważnym elementem gita jest plik `.gitignore` który informuje program o zawarto
 Tworzymy go poleceniem `touch .gitignore` w głównym katalogu projektu.
 Następnie możemy dodać do niego informacje o plikach i katalogach, które mają nie podlegać wersjonowaniu. Możemy to zrobić otwierając plik i edytując go ręcznie, bądź w prostszy sposób poprzez terminal, poleceniem:
 
-```
+```bash
 echo node_modules >> .gitignore
 ```
 
 po czym sprawdzamy czy zawartość została dodana poleceniem
-```
+```bash
 cat .gitignore
 ```
-
 
 # Instalacja Node na lokalnej maszynie
 
@@ -139,47 +136,44 @@ W zależności od używanego systemu operacyjnego instalacja przebiega w różny
 
 Aby ułatwić zarządzanie wersjami Node.js oraz ułatwić instalację zaleca się używanie narzędzia NVM dostępnego pod adresem https://github.com/creationix/nvm
 
-
 # Instalacja nowszej wersji Node.js przy użyciu narzędzia NVM
 
 Aktualnie używaną wersję Node.js sprawdzamy poleceniem:
-```
+```bash
 node -v
 ```
 
 Dostępne wersje możemy wylistować poleceniem:
-```
+```bash
 nvm ls
 ```
 
 Aby zainstalować inną wersję wykonujemy polecenie `nvm install` z podaniem wybranej wersji:
-```
+```bash
 nvm install 10
 ```
 
 Następnie warto ustawić zainstalowaną wersję jako domyślną:
 
-```
+```bash
 nvm alias default 10
 ```
-
 
 # Tworzenie projektu
 
 Każdy projekt webowy powinien rozpocząć się od utworzenia pliku `package.json`, który zawiera podstawowe informacje o projekcie oraz jego zależnościach.
 
-
 W jednym z poprzednich zadań stworzyliśmy katalog `~/project/src` z plikami źródłowymi: `index.html`, `main.js` oraz `style.css` – będzie to szkielet naszego projektu.
 
 Aby rozpocząć projekt należy przejść do katalogu `~/project` a następnie wykonać polecenie:
 
-```
+```bash
 npm init -y
 ```
 
 Na ekranie powinniśmy zobaczyć informację zwrotną o utorzeniu pliku:
 
-```
+```json
 Wrote to ~/project/package.json:
 
 {
@@ -201,18 +195,17 @@ Po rozpoczęciu projektu możemy go otworzyć w edytorze.
 
 Po otwarciu projektu możemy edytować pliki znajdujące się w katalogu `src`.
 
-
 # Praca w środowisku lokalnym
 
 Zanim projekt webowy zostanie w drożony na serwer docelowy programista powinien mieć możliwość sprawdzenia go w środowisku lokalnym.
 
 W tym celu wykorzystać można pakiet `serve` dostępny w menadżerze pakietów NPM. Aby go zainstalować użyjemy polecenia
-```
+```bash
 npm install -g serve
 ```
 
 Po instalacji możemy rozpocząć serwowanie naszej strony w środowisku lokalnym używając w katalogu `~/project` polecenia:
-```
+```bash
 serve src -p 8080
 ```
 
@@ -236,13 +229,13 @@ Chcąc stworzyć większy projekt niezbędne będzie użycie zewnątrznych bibli
 
 Webpack jest narzędziem developerskim, a nie zależnością naszej aplikacji, więc zainstalujemy go oraz inne potrzebne narzędzia z użyciem flagi `--save-dev`:
 
-```
+```bash
 npm install --save-dev webpack webpack-cli html-webpack-plugin copy-webpack-plugin webpack-dev-server
 ```
 
 Aby korzystać z Webpacka niezbędny będzie plik o nazwie `webpack.config.js` w głównym katalogu naszej aplikacji.
 Tworzymy go poleceniem `touch webpack.config.js` a następnie otwieramy poprzez `code webpack.config.js` i uzupełniamy go następującą treścią:
-```
+```javascript
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -265,7 +258,7 @@ module.exports = {
 ```
 
 Następnie w pliku `package.json` należy zastąpić obiekt `scripts` poniższym:
-```
+```json
 "scripts": {
   "dev": "webpack-dev-server",
   "build": "webpack"
@@ -277,7 +270,7 @@ Przed rozpoczęciem pracy z webpackiem należy w pliku `index.html` usunąć lin
 Od teraz komendą `npm run-script dev` wystartujemy developerski serwer, który będzie serwował naszą aplikację i odświeżał ją po naszysz zmianach w kodzie. Serwer developerski domyślnie serwuje aplikację na porcie `8080`.
 
 Dodatkowo w pliku `webpack.config.js` należy dodać wpis konfiguracyjny serwera:
-```
+```json
   devServer: {
     historyApiFallback: true,
     port: 8080,
@@ -293,7 +286,7 @@ Zanim jednak wdrożymy naszą aplikację na produkcję warto zadbać o minifikac
 Oznacza ona, że jeśli podczas działania procesu programu `webpack` będzie istniała zmienna środowiskowa `PRODUCTION` to do tablicy pluginów należy dodać kolejny, który zadba o minifikację kodu.
 
 Aby program zaczął działać ponownie musimy dokonać zmian w pliku `package.json` – zmienimy zawartość skryptu `build` na poniższą:
-```
+```json
 "build": "PRODUCTION=true webpack"
 ```
 
@@ -305,7 +298,7 @@ Należy pamiętać, że kod JavaScript wykonywany na serwerze, pomimo braku ró�
 
 Wykonując skrypt poniższy skrypt w przeglądarce
 
-```
+```javascript
 document.write(window.location.href)
 ```
 
@@ -325,13 +318,13 @@ Dokumentacja biblioteki standardowej Node.js znajduje się pod adresem https://n
 Aplikacja backendowa w Node.js to nic innego jak skrypt napisany JavaScript wykonywany przez maszynę wirtualną Node.js, którą wcześniej zainstalowaliśmy.
 
 Tworzymy plik wejściowy o nazwie `index.js` poleceniem w głównym katalogu aplikacji:
-```
+```bash
 cd ~/project
 touch index.js
 ```
 
 Serwer webowy dla aplikacji możemy napisać w całości używając komponentów biblioteki standardowej Node.js, jak w prostym przykładnie poniżej:
-```
+```javascript
 var http = require('http')
 
 var PORT = 3000;
@@ -354,7 +347,7 @@ app.listen(PORT, function() {
 Natomiast w tym przypadku musimy samodzielnie zadbać o trasowanie, parsowanie wiadomości przychodzących, sprawdzanie nagłówków czy zapisywanie kodów HTTP dla odpowiedzi na zapytania.
 
 Aby nie wymyślać koła na nowo użyjemy frameworka Express.js, w którym ten tę samą funkcjonalność możemy zapisać w dużo bardziej czytelny sposób:
-```
+```javascript
 var express = require('express')
 
 var PORT = 3000;
@@ -375,7 +368,7 @@ app.listen(PORT, function() {
 Aby przejść do tworzenia właściwego backendu aplikacji webowej potrzebujemy zainstalować zależność w postaci frameworka Express.js oraz jego dodatkowych komponentów.
 
 Wykonujemy polecenie:
-```
+```bash
 npm install --save express body-parser
 ```
 
@@ -385,12 +378,12 @@ Kolejnym krokiem będzie edycja kodu źródłowego `index.js` na podany w przyk�
 
 Po zakończeniu wstępnego etapu implementacji należy dodać kolejny skrypt NPM w pliku `package.json`:
 
-```
+```json
 "server": "node index.js"
 ```
 
 Po dodaniu skryptu możemy go uruchomić poleceniem
-```
+```bash
 npm run-script server
 ```
 
@@ -402,12 +395,11 @@ listening on port 3000
 Oznacza to, iż nasz serwer nasłuchuje na zapytania na porcie `8080`.
 
 Aby przetestować działanie aplikacji możemy odpytać serwer narzędziem `curl`, które wcześniej zainstalowaliśmy:
-```
+```bash
 curl http://localhost:3000
 ```
 
 Innym sposobem na sprawdzenie działania aplikacji jest uruchomienie w przeglądarce adresu URL `http://localhost:8080` bądź kliknięcie przycisku _Preview_ w środowisku Cloud9.
-
 
 # Serwowanie statycznych plików
 
@@ -419,28 +411,28 @@ Po zbudowaniu frontendu poleceniem `npm run-script build` pliki produkcyjne są 
 
 Aby użyć ich jako interfejsu naszej aplikacji posłużymy się modułem `static` udostępnionym przez Express.js. W tym momencie możemy zastąpić kod odpowidzialny za generowanie odpowiedzie na dowolne zapytanie jako `{"hello": "world"}` kodem, który wyśle do przeglądarki stworzone przez nas pliki:
 
-```
+```javascript
 app.get('*', express.static('./dist));
 ```
 
 Próba uruchomienia aplikacji zakończy się błędem, ponieważ użyliśmy w kodzie modułu `path`, który nie został jeszcze zadeklarowany. Naprawimy to dodając poniższą linijkę na początku pliku:
-```
+```javascript
 var path = require('path')
 ```
 
 Każda zmiana w pliku `index.js` wymaga restartu aplikacji, aby zautomatyzować tę czynność zainstalujemy pakiet o nazwie `nodemon`, który będzie restartować serwer podczas zmian w pliku źródłowym w sposób automatyczny.
 
-```
+```bash
 npm install --save-dev nodemon
 ```
 
 Po instalacji edytujemy skrypt `"server"` na poniższy:
-```
+```json
 "server": "nodemon index.js"
 ```
 
 Następnym razem po wykonaniu skryptu:
-```
+```bash
 npm run-script server
 ```
 
@@ -460,35 +452,35 @@ Kolejnym krokiem jest możliwość podglądu zmian w interfejsie użytkownika po
 
 Narzędzie to pozwala na uruchimienie kilku skryptów NPM równolegle.
 
-```
+```bash
 npm install --save-dev npm-run-all
 ```
 
-Po instalacji edytujemy skrypty w `package.json` jak w przykładzie poniżej.
+Po instalacji edytujemy skrypty w `package.json` jak w przykładzie poniżej (`lub: "build": "PRODUCTION=true webpack"`).
 
-```
+```json
 "scripts": {
   "dev": "run-p dev:client dev:server",
   "dev:client": "webpack-dev-server",
   "dev:server": "nodemon index.js",
-  "build": "PRODUCTION=true webpack"
+  "build": "PRODUCTION=1 webpack"
 },
 ```
 
 Pomimo wystartowania obydwu skryptów naraz, jeden z nich serwuje warstwę kliencką aplikacji poprzez **Webpack Dev Server** na porcie `8080`, natomiast drugi nadal serwuje statyczne pliki z folderu `dist` na porcie `8081`.
 
 Aby rozwiązać powyższy problem, posłużymy się biblioteką `express-http-proxy` dostępną w NPM. Instalujemy bibliotekę poleceniem:
-```
+```bash
 npm install --save express-http-proxy
 ```
 
 Następnie w pliku `index.js` w jednej z pierwszych linii dodajemy deklarację:
-```
+```javascript
 var proxy = require('express-http-proxy')
 ```
 
 oraz zastępujemy kod odpowiedzialny za serwowanie statycznych plików poniższym:
-```
+```javascript
 var frontend;
 if (process.env['PRODUCTION']) {
   frontend = express.static('./dist');
@@ -512,7 +504,7 @@ Pierwszym krokiem podczas budowy API jest deklaracja ścieżek do których użyt
 
 W pliku `index.js` tuż po zadeklarowaniu zmiennej `app` należy dodać poniższy kod:
 
-```
+```javascript
 var NOTES_URL = '/notes';
 
 app.get(NOTES_URL, function(req, res) {
@@ -554,7 +546,7 @@ Podstawowe REST API jest już gotowe, chodź jego funkcjonalność jest obecnie 
 
 Aby wyświetlać listę notatek w przeglądarce niezbędne będą następujące zmiany w pliku `index.html` wewnątrz znacznika `<body>`
 
-```
+```html
 <h1>Notes</h1>
 <p id="content">Loading&hellip;</p>
 <form id="todos">
@@ -566,7 +558,7 @@ Aby wyświetlać listę notatek w przeglądarce niezbędne będą następujące 
 Po zapisaniu zmian w przeglądarce zobaczymy nagłówek `Notes`, komunikat `Loading…` oraz formularz służący do dodawania nowych notatek z przyciskiem.
 
 Następnie w pliku `main.js` zastąpimy jedyną linię kodu, poniższymi:
-```
+```javascript
 document.addEventListener('DOMContentLoaded', function() {
   var content = document.getElementById('content');
   var form = document.getElementById('todos');
@@ -595,7 +587,7 @@ Niestety dodawane notatki są trzymane jedynie w pamięci komputera przeznaczone
 Aby temu zapobiec zaimplementujemy zapisywanie danych na serwerze poprzez zapytanie do utworzonego wcześniej REST API. Do wysyłania zapytań posłużymy się Fetch API.
 
 Aby wysyłać do serwera informację o utowrzeniu nowej notatki zmienimy napisany wcześniej kod odpowiedzialny za obsługę zdarzenia `submit` w następujący sposób:
-```
+```javascript
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   var note = input.value;
@@ -610,7 +602,7 @@ form.addEventListener('submit', function(event) {
 ```
 
 Aby być w stanie odczytywać listę notatek dodamy także:
-```
+```javascript
 fetch('/notes').then(function(res) {
   res.json().then(function(data) {
     content.innerHTML = '';
@@ -626,7 +618,7 @@ Kod ten odpowiada za pobranie i wyświetlenie listy notatek tuż po załadowaniu
 Niestety zapytanie o listę notatek zawsze zwraca pustą listę, zgodnie z implementacją naszego REST API.
 
 Pierwszym krokiem do komunikacji pomiędzy klientem a serwerem jest przesyłanie informacji o wysyłanym i akceptowanym typie danych – w pliku `main.js` należy na początku dodać poniższy fragment kodu:
-```
+```javascript
 var headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json'
@@ -637,7 +629,7 @@ Kolejnym krokiem jest implementacja zapisu i odczytu notatek po stronie serwera.
 
 Aby Express był w stanie w w prosty sposób parsować komunikaty przesyłane przez przeglądarkę należy w pliku `index.js` zaimportować oraz użyć biblioteki `body-parser`, która została zainstalowana wcześniej:
 
-```
+```javascript
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
@@ -645,7 +637,7 @@ app.use(bodyParser.json());
 
 W pliku `index.js` należy zadeklarować tablicę, w której przechowywana będzie informacja o zapisanych notatkach, a także zedytować istniejące metody odpowiadające za zapis i odczyt notatek:
 
-```
+```javascript
 var notes = [];
 
 app.post('/note/add', function(req, res) {
@@ -662,16 +654,16 @@ app.get('/notes', function(req, res) {
 Lista notatek będzie od teraz przechowywana na serwerze i kolejne odświeżenie okna przeglądarki nie będzie powodowało utraty danych.
 
 Ostatnim krokiem jest umożliwienie kasowanie niepotrzebnych notatek. Aby to osiągnąć w pliku `main.js` należy rozszerzyć funkcję `addNote` w następujący sposób:
-```
+```javascript
 function addNote(note) {
   var element = document.createElement('div')
   element.innerHTML = note;
-  element.className = 'note'
+  element.className = 'note';
   element.addEventListener('click', function() {
     var info = document.createElement('span');
     info.className = 'info';
     info.innerHTML = 'deleting…';
-    element.appendChild(info)
+    element.appendChild(info);
     fetch('/notes', {
         method: 'delete',
         headers: headers,
@@ -692,7 +684,7 @@ function addNote(note) {
 ```
 
 Na serwerze natomiast należy zmienić funkcję odpowiadającą za metodę `DELETE` w następujący sposób:
-```
+```javascript
 app.delete('/notes', function(req, res) {
   var note = req.body.note;
   var index = notes.indexOf(note);
@@ -702,7 +694,7 @@ app.delete('/notes', function(req, res) {
 ```
 
 Aby polepszyć tzw. User Experience aplikacji, warto dodać też style dla komunikatu o kasowaniu notatki w pliku `style.css`:
-```
+```css
 .note {
   cursor: pointer;
 }
